@@ -1,25 +1,28 @@
-import './App.css';
-import Exhibit from './components/Exhibit';
-import logo from './cisco-logo.svg';
-import Container from 'react-bootstrap/Container';
-import Navbar from 'react-bootstrap/Navbar';
-import 'bootstrap/dist/css/bootstrap.min.css';
+import "./App.css";
+import Exhibit from "./components/Exhibit";
+import Banner from "./components/Banner";
+import Container from "react-bootstrap/Container";
+import "bootstrap/dist/css/bootstrap.min.css";
+import IPDisplay from "./components/IPDisplay";
 
 function App() {
   return (
-    <div className='App'>
+    <div className="App">
+      <Banner />
       <Container>
-        <Navbar bg='light' variant='light' className='px-2'>
-          <Container>
-            <Navbar.Brand href='#home'>
-              <img alt='Cisco Logo' src={logo} width='35' height='35' className='d-inline-block align-top' />
-              {' '}
-              Sextant
-            </Navbar.Brand>
-          </Container>
-        </Navbar>
-        <div className='content my-3'>
-          <Exhibit />
+        <div className="content my-3">
+          <div className="row">
+            <div className="col-sm">
+              <Exhibit name="Your IP v4 Address">
+                <IPDisplay version="4" />
+              </Exhibit>
+            </div>
+            <div className="col-sm">
+              <Exhibit name="Your IP v6 Address">
+                <IPDisplay version="6" />
+              </Exhibit>
+            </div>
+          </div>
         </div>
       </Container>
     </div>
