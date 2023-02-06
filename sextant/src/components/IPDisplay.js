@@ -11,18 +11,21 @@ class IPDisplay extends React.Component {
   }
 
   componentDidMount() {
-    let url = "https://api.ipify.org?format=json";
+    let url = "https://api.ipify.org?format=text";
     if (this.props.version === "6") {
-      url = "https://api64.ipify.org?format=json";
+      url = "https://api64.ipify.org?format=text";
     }
 
     fetch(url)
-      .then((response) => response.json())
+      .then((response) => response.text())
       .then(
         (data) => {
+          if (this.props.version == 6 && data.includes(".")) {
+            data = "v6 Address Unavailable";
+          }
           this.setState({
             isLoaded: true,
-            ip: data.ip,
+            ip: data,
           });
         },
         (error) => {
