@@ -20,7 +20,7 @@ class IPDisplay extends React.Component {
       .then((response) => response.text())
       .then(
         (data) => {
-          if (this.props.version == 6 && data.includes(".")) {
+          if (this.props.version === "6" && data.includes(".")) {
             data = "v6 Address Unavailable";
           }
           this.setState({
